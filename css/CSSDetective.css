@@ -1,0 +1,196 @@
+/* Font */
+@font-face {
+    font-family: 'Sansregular';
+          src: url('../font/OpenSans-Regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Style Utama */
+.cf:before,
+.cf:after {
+     content: " "; /* 1 */
+     display: table; /* 2 */
+}
+
+.cf:after {
+     clear: both;   /* kode intinya*/
+}
+
+body{
+    font-size: 20px;
+    line-height: 30px;
+    font-family: 'Sansregular';
+    background-color: rgb(255, 218, 206);
+}
+
+/* Judul */
+h1{
+    font-size: 40px;
+    margin: 10px;
+    text-align: center;
+    filter: drop-shadow(2px 2px 2px gray);
+}
+
+/* Kontainer */
+.container{
+    background-color: rgb(242, 231, 168);
+    box-shadow: 0 0 5px 5px rgb(128, 128, 128, 0.3);
+    border-radius: 5px;
+    height: auto;
+    width: 850px;
+    box-sizing: border-box;
+    margin: 30px auto;
+    padding: 10px;
+}
+
+/*thumbnail */
+ul.galeri li{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border: 3px rgb(146, 78, 0) solid;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+}
+
+ul.galeri li span{
+    display: block;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 0, 0, .5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 150px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #000;
+    filter: opacity(0);
+    transition: .3s;
+}
+
+ul.galeri li a:hover span{
+    filter: opacity(1);
+}
+
+ul.galeri li span, 
+ul.galeri li img.thumb, 
+ul.galeri li{
+    border-radius: 50%;
+}
+
+
+/* full */
+div.overlay{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0, 0);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    transition: .3s;
+    text-align: center;
+    padding: 100px 0;
+} 
+
+div.overlay img.full{
+    box-shadow: 0 0 5px 2px #fff;
+}
+
+.overlay .close{
+    color: #000;
+    text-decoration: none;
+    background-color: #fff;
+    position: absolute;
+    top: 50px;
+    right: 49%;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+div.overlay:target a.close{
+    animation: slidebawah .4s;
+}
+
+div.overlay:target img{
+    animation: fadeIn .8s;
+}
+
+div.overlay:target{
+    width: auto;
+    height: auto;
+    overflow: visible;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(0, 0, 0, .8);
+}
+
+div.overlay img.Previous, div.overlay img.Next{
+    width: 35px;
+    height: 60px;
+    margin: 0 20px 250px 20px;
+    filter: opacity(1);
+}
+
+div.overlay:target img.Previous, div.overlay:target img.Next{
+    animation: fadeIn 2s;
+}
+
+@keyframes zoomDanFadeIn {
+    0%{
+        transform: scale(0);
+        filter: opacity(0);
+    }
+
+    100%{
+        transform: scale(1);
+        filter: opacity(1);
+    }
+}
+
+@keyframes slidebawah {
+    0%{
+        filter: opacity(0);
+        top: 30px;
+    }
+
+    25%{
+        filter: opacity(.25);
+        top: 35px;
+    }
+
+    50%{
+        filter: opacity(.5);
+        top: 40px;
+    }
+
+    75%{
+        filter: opacity(.75);
+        top: 45px;
+    }
+
+    100%{
+        top: 50px;
+        filter: opacity(1);
+    }
+}
+
+@keyframes fadeIn{
+    0%{
+        filter: opacity(0);
+    }
+
+    100%{
+        filter: opacity(1);
+    }
+}
